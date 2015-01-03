@@ -1,0 +1,44 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="Dashboard">
+    <meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
+    {% block title %}
+    <title>Facebook login</title>
+    {% endblock title %}
+    {% load staticfiles %}
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+ <link href="{{ STATIC_URL }}django_facebook/css/facebook.css" type="text/css" rel="stylesheet" media="all" />
+{% include 'django_facebook/_facebook_js.html' %}
+   </head>
+   <body>
+    {% block contain %}
+   	
+		<div class="container">
+			<div style="position:relative; left:20%; top 25%; padding:0%" class="col-md-6 .col-md-offset-3">
+				<br><br><br>
+				<div class="jumbotron">
+  					<p class="bg-primary " style="text-align:center"><b>Login</b></p>
+  					<p>To Use this application please login with Facebook Account</p>
+<form action="{% url 'facebook_connect' %}?facebook_login=1" method="post">
+    <input type="hidden" value="{{ request.path }}" name="next" />
+    <input type="hidden" value="{{ request.path }}" name="next" />
+    <input type="hidden" value="{{ request.path }}" name="error_next" />
+    {% csrf_token %}
+    <input onclick="F.connect(this.parentNode); return false;" type="image" src="{{ STATIC_URL }}django_facebook/images/facebook_login.png" />
+</form>
+				</div>
+			</div>
+		</div>
+   
+    <script src="{% static 'js/jquery-1.8.3.min.js' %}"></script>
+     <script  href="{% static 'js/bootstrap.js' %}"/>
+     <link href="{{ STATIC_URL }}django_facebook/css/facebook.css" type="text/css" rel="stylesheet" media="all" />
+{% include 'django_facebook/_facebook_js.html' %}
+{% endblock contain %}
+</body>
+
+   </html>

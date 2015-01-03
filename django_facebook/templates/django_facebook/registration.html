@@ -1,0 +1,36 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="Dashboard">
+    <meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
+    {% block title %}
+    <title>Facebook login</title>
+    {% endblock title %}
+    {% load staticfiles %}
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+ <link href="{{ STATIC_URL }}django_facebook/css/facebook.css" type="text/css" rel="stylesheet" media="all" />
+{% include 'django_facebook/_facebook_js.html' %}
+   </head>
+   <body>
+<form class="form-horizontal style-form" method="POST" enctype="multipart/form-data">
+                        {% csrf_token %} 
+                          <div class="form-group">
+                              <label class="col-sm-2 col-sm-2 control-label">Statement</label>
+                              <div class="col-sm-10">
+                                  <textarea class="form-control" name="message" rows="4"></textarea>
+                              </div>
+                          </div>
+                          
+                        <legend class="center-block"></legend>
+                          <div class="inline"><input type="submit" name="save_continue" value="Save and Continue" name="save" class="btn btn-info btn-lg" style="width:50%">&nbsp;
+                         <a href="/wall_post/" <input type="submit" name="save_exit" value="Save and Exit"  class="btn btn-danger btn-lg" style="width:49%"></div>
+                      </form>
+      </body>
+
+
+</html>
+
+
